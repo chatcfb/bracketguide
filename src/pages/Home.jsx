@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
@@ -11,9 +11,23 @@ import SocialSentiment from '@/components/home/SocialSentiment';
 import AIPredictions from '@/components/home/AIPredictions';
 import TopPlayersWidget from '@/components/home/TopPlayersWidget';
 import UpcomingGamesWidget from '@/components/home/UpcomingGamesWidget';
+import WelcomeModal from '@/components/home/WelcomeModal';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  useEffect(() => {
+    const hasSeenWelcome = localStorage.getItem('cbbai_welcome_seen');
+    if (!hasSeenWelcome) {
+      setShowWelcome(true);
+    }
+  }, []);
+
+  const handleEnter = () => {
+    localStorage.setItem('cbbai_welcome_seen', 'true');
+    setShowWelcome(false);
+  };
   const { data: feedItems, isLoading: feedLoading } = useQuery({
     queryKey: ['feedItems'],
     queryFn: () => base44.entities.FeedItem.list('-created_date', 50),
@@ -38,6 +52,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-4">
+      {/* Welcome Modal - shows once for new users */}
+      <WelcomeModal isOpen={showWelcome} onEnter={handleEnter} />
+
       {/* Live Scores Banner */}
       <LiveScoreBanner games={games} />
 
