@@ -68,7 +68,7 @@ Respond as Bruce - be enthusiastic, use basketball slang like "bucket," "hoops,"
     setIsTyping(false);
   };
 
-  const ChatContent = () => (
+  const chatContent = (
     <div className={`flex flex-col ${isFullScreen ? 'h-full' : 'h-[500px]'}`}>
       {/* Header */}
       <div className="bg-gradient-to-r from-[#002D62] to-[#003875] p-4 flex items-center justify-between">
@@ -174,7 +174,7 @@ Respond as Bruce - be enthusiastic, use basketball slang like "bucket," "hoops,"
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-50 bg-[#001428]"
       >
-        <ChatContent />
+        {chatContent}
       </motion.div>
     );
   }
@@ -241,7 +241,7 @@ Respond as Bruce - be enthusiastic, use basketball slang like "bucket," "hoops,"
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="fixed bottom-24 right-4 z-50 w-[360px] max-w-[calc(100vw-2rem)] rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-[#00BFFF]/20"
           >
-            <ChatContent />
+            {chatContent}
           </motion.div>
         )}
       </AnimatePresence>
