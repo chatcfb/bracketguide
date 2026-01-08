@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BottomNav from '@/components/navigation/BottomNav';
+import DesktopSidebar from '@/components/navigation/DesktopSidebar';
 import BruceChatBubble from '@/components/bruce/BruceChatBubble';
 import CBBAILogo from '@/components/ui/CBBAILogo';
 import { Bell, Star } from 'lucide-react';
@@ -10,7 +11,7 @@ export default function Layout({ children, currentPageName }) {
   const hideNav = currentPageName === 'Profile' && false;
 
   return (
-    <div className="min-h-screen bg-[#0A0F1C] text-white">
+    <div className="min-h-screen bg-[#0A0F1C] text-white lg:flex">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -89,9 +90,14 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
       
-      {/* Header */}
+      {/* Desktop Sidebar - Hidden on mobile */}
+      <div className="hidden lg:block">
+        <DesktopSidebar currentPage={currentPageName} />
+      </div>
+
+      {/* Mobile Header - Hidden on desktop */}
       {!isBruceFullScreen && (
-        <header className="fixed top-0 left-0 right-0 z-40 bg-[#0A0F1C]/95 backdrop-blur-xl border-b border-[#00BFFF]/10">
+        <header className="fixed top-0 left-0 right-0 z-40 bg-[#0A0F1C]/95 backdrop-blur-xl border-b border-[#00BFFF]/10 lg:hidden">
           <div className="flex items-center justify-between h-14 px-4 max-w-lg mx-auto">
             <CBBAILogo size="sm" />
             <div className="flex items-center gap-2">
@@ -109,12 +115,14 @@ export default function Layout({ children, currentPageName }) {
       )}
       
       {/* Main content */}
-      <main className={`circuit-bg min-h-screen ${!isBruceFullScreen ? 'pt-14 pb-20' : ''}`}>
-        {children}
+      <main className={`circuit-bg min-h-screen flex-1 ${!isBruceFullScreen ? 'pt-14 pb-20 lg:pt-0 lg:pb-0 lg:ml-64' : ''}`}>
+        <div className="lg:max-w-5xl lg:mx-auto lg:py-8 lg:px-6">
+          {children}
+        </div>
       </main>
-      
-      {/* Bottom Navigation */}
-      {!isBruceFullScreen && <BottomNav currentPage={currentPageName} />}
+
+      {/* Bottom Navigation - Hidden on desktop */}
+      {!isBruceFullScreen && <div className="lg:hidden"><BottomNav currentPage={currentPageName} /></div>}
       
       {/* Bruce Chat */}
       <BruceChatBubble isFullScreen={isBruceFullScreen} setIsFullScreen={setIsBruceFullScreen} />
