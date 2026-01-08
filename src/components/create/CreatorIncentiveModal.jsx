@@ -56,9 +56,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
             {/* Middle Section - Value Props */}
             <div className="flex-1 flex flex-col justify-center space-y-3 my-4">
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#00BFFF] to-[#0099CC] flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-4 h-4 text-white" />
-                </div>
+                <Zap className="w-6 h-6 text-[#00BFFF] flex-shrink-0 drop-shadow-[0_0_8px_rgba(0,191,255,0.6)]" />
                 <div>
                   <h3 className="font-semibold text-white text-sm">Create Your Content</h3>
                   <p className="text-gray-400 text-xs">AI-powered tools turn your ideas into engaging content in seconds</p>
@@ -66,9 +64,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
               </div>
 
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#FF6A00] to-[#FF8C33] flex items-center justify-center flex-shrink-0">
-                  <TrendingUp className="w-4 h-4 text-white" />
-                </div>
+                <TrendingUp className="w-6 h-6 text-[#FF6A00] flex-shrink-0 drop-shadow-[0_0_8px_rgba(255,106,0,0.6)]" />
                 <div>
                   <h3 className="font-semibold text-white text-sm">Build Your Influence</h3>
                   <p className="text-gray-400 text-xs">Grow your audience with quality content and track engagement</p>
@@ -76,9 +72,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
               </div>
 
               <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
-                  <Crown className="w-4 h-4 text-white" />
-                </div>
+                <Crown className="w-6 h-6 text-[#A855F7] flex-shrink-0 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
                 <div>
                   <h3 className="font-semibold text-white text-sm">Own Your Channel</h3>
                   <p className="text-gray-400 text-xs">Your personal brand. Your content. Your community</p>
@@ -91,7 +85,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
               {/* Rewards */}
               <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-xl p-3 mb-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <Award className="w-4 h-4 text-yellow-500" />
+                  <Award className="w-5 h-5 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]" />
                   <h3 className="font-semibold text-white text-sm">Earn as You Create</h3>
                 </div>
                 <div className="flex items-center gap-4">
