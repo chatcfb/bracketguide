@@ -9,7 +9,7 @@ import CreatorIncentiveModal from '@/components/create/CreatorIncentiveModal';
 
 export default function Create() {
   const [selectedType, setSelectedType] = useState(null);
-  const [showIncentiveModal, setShowIncentiveModal] = useState(false);
+  const [showIncentiveModal, setShowIncentiveModal] = useState(true);
   const queryClient = useQueryClient();
 
   const { data: user } = useQuery({
@@ -24,11 +24,7 @@ export default function Create() {
     },
   });
 
-  useEffect(() => {
-    if (user && (user.creatorModalViewCount || 0) < 7) {
-      setShowIncentiveModal(true);
-    }
-  }, [user]);
+
 
   const { data: teams } = useQuery({
     queryKey: ['teams'],
