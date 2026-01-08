@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BottomNav from '@/components/navigation/BottomNav';
 import BruceChatBubble from '@/components/bruce/BruceChatBubble';
 import CBBAILogo from '@/components/ui/CBBAILogo';
-import { Bell } from 'lucide-react';
+import { Bell, Star } from 'lucide-react';
 
 export default function Layout({ children, currentPageName }) {
   const [isBruceFullScreen, setIsBruceFullScreen] = useState(false);
@@ -59,10 +59,16 @@ export default function Layout({ children, currentPageName }) {
         <header className="fixed top-0 left-0 right-0 z-40 bg-[#0A0F1C]/95 backdrop-blur-xl border-b border-[#00BFFF]/10">
           <div className="flex items-center justify-between h-14 px-4 max-w-lg mx-auto">
             <CBBAILogo size="sm" />
-            <button className="relative p-2 rounded-full hover:bg-white/5 transition-colors">
-              <Bell className="w-5 h-5 text-gray-400" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#FF6A00] rounded-full" />
-            </button>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FF6A00]/10 border border-[#FF6A00]/30">
+                <Star className="w-3.5 h-3.5 text-[#FF6A00]" />
+                <span className="text-sm font-bold text-[#FF6A00]">1,247</span>
+              </div>
+              <button className="relative p-2 rounded-full hover:bg-white/5 transition-colors">
+                <Bell className="w-5 h-5 text-gray-400" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-[#FF6A00] rounded-full" />
+              </button>
+            </div>
           </div>
         </header>
       )}
