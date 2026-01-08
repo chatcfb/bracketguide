@@ -10,6 +10,7 @@ import DailyChallengeCard from '@/components/home/DailyChallengeCard';
 import SocialSentiment from '@/components/home/SocialSentiment';
 import AIPredictions from '@/components/home/AIPredictions';
 import TopPlayersWidget from '@/components/home/TopPlayersWidget';
+import UpcomingGamesWidget from '@/components/home/UpcomingGamesWidget';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -79,6 +80,9 @@ export default function Home() {
 
       {/* AI Predictions */}
       <AIPredictions games={games} />
+
+      {/* Upcoming Games */}
+      <UpcomingGamesWidget games={games} />
 
       {/* Social Sentiment */}
       <SocialSentiment />
