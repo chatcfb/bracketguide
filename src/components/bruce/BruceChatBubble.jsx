@@ -191,34 +191,44 @@ Respond as Bruce - be enthusiastic, use basketball slang like "bucket," "hoops,"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-24 right-4 z-50 w-16 h-16 rounded-full shadow-lg shadow-[#00BFFF]/50 flex items-center justify-center"
+            className="fixed bottom-24 right-4 z-50 w-16 h-16 rounded-full flex items-center justify-center"
             style={{ 
-              background: 'linear-gradient(135deg, #FF6A00 0%, #FF8C33 50%, #FF6A00 100%)',
-              boxShadow: '0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(255, 106, 0, 0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
+              boxShadow: '0 0 20px rgba(0, 191, 255, 0.6), 0 0 40px rgba(255, 106, 0, 0.4)'
             }}
           >
-            {/* AI Sparkle Icon */}
-            <div className="relative">
-              <Sparkles className="w-7 h-7 text-white drop-shadow-[0_0_8px_rgba(0,191,255,0.8)]" />
-              {/* Small basketball accent */}
-              <div 
-                className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border border-white/40"
-                style={{ background: 'linear-gradient(135deg, #FF8C33, #CC5500)' }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-[1px] bg-white/30" />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="h-full w-[1px] bg-white/30" />
-                </div>
-              </div>
-            </div>
+            {/* Basketball background */}
+            <svg viewBox="0 0 64 64" className="absolute inset-0 w-full h-full">
+              <defs>
+                <radialGradient id="ballGradient" cx="30%" cy="30%" r="70%">
+                  <stop offset="0%" stopColor="#FF8C33" />
+                  <stop offset="100%" stopColor="#E55A00" />
+                </radialGradient>
+              </defs>
+              
+              {/* Ball */}
+              <circle cx="32" cy="32" r="30" fill="url(#ballGradient)" />
+              
+              {/* Basketball seams */}
+              <path d="M32 2 L32 62" stroke="#CC4400" strokeWidth="2" fill="none" opacity="0.5" />
+              <path d="M2 32 L62 32" stroke="#CC4400" strokeWidth="2" fill="none" opacity="0.5" />
+              <path d="M8 12 Q32 32 8 52" stroke="#CC4400" strokeWidth="2" fill="none" opacity="0.5" />
+              <path d="M56 12 Q32 32 56 52" stroke="#CC4400" strokeWidth="2" fill="none" opacity="0.5" />
+            </svg>
             
-            {/* Pulsing cyan ring */}
-            <span className="absolute inset-0 rounded-full border-2 border-[#00BFFF] animate-ping" style={{ animationDuration: '2s' }} />
+            {/* AI Sparkle Icon centered */}
+            <Sparkles className="relative z-10 w-7 h-7 text-white drop-shadow-[0_0_10px_rgba(0,191,255,1)]" />
             
-            {/* Static glow ring */}
-            <span className="absolute inset-[-2px] rounded-full border-2 border-[#00BFFF]/60" />
+            {/* Pulsing cyan ring - stops after 5 seconds */}
+            <motion.span 
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0 }}
+              transition={{ delay: 5, duration: 0.5 }}
+              className="absolute inset-[-4px] rounded-full border-2 border-[#00BFFF] animate-ping" 
+              style={{ animationDuration: '2s' }} 
+            />
+            
+            {/* Static cyan glow ring */}
+            <span className="absolute inset-[-2px] rounded-full border-2 border-[#00BFFF]/50" />
           </motion.button>
         )}
       </AnimatePresence>
