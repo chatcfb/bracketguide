@@ -8,7 +8,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-[10vh]">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -23,7 +23,7 @@ export default function CreatorIncentiveModal({ isOpen, onClose, onStartCreating
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-md bg-gradient-to-br from-[#001428] via-[#002D62] to-[#001428] rounded-3xl border-2 border-[#00BFFF]/30 overflow-hidden shadow-2xl"
+          className="relative w-full max-w-md max-h-full overflow-y-auto bg-gradient-to-br from-[#001428] via-[#002D62] to-[#001428] rounded-3xl border-2 border-[#00BFFF]/30 shadow-2xl"
         >
           {/* Animated Background Effects */}
           <div className="absolute inset-0 overflow-hidden">
