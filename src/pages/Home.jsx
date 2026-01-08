@@ -77,7 +77,7 @@ export default function Home() {
             <FeedCard key={item.id} item={item} index={idx + 6} />
           ))}
         </div>
-      )
+      )}
 
       {/* Loading indicator for infinite scroll simulation */}
       {!isLoading && feedItems?.length > 0 && (
