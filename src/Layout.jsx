@@ -27,6 +27,7 @@ export default function Layout({ children, currentPageName }) {
           font-family: 'Inter', sans-serif;
           background: var(--color-bg-dark);
           -webkit-font-smoothing: antialiased;
+          -webkit-tap-highlight-color: transparent;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -36,6 +37,7 @@ export default function Layout({ children, currentPageName }) {
         /* Custom scrollbar */
         ::-webkit-scrollbar {
           width: 4px;
+          height: 4px;
         }
         ::-webkit-scrollbar-track {
           background: var(--color-bg-dark);
@@ -45,12 +47,45 @@ export default function Layout({ children, currentPageName }) {
           border-radius: 2px;
         }
         
+        /* Hide scrollbar for horizontal scroll */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
         /* Circuit pattern background */
         .circuit-bg {
           background-image: 
             radial-gradient(circle at 20% 50%, rgba(0, 191, 255, 0.03) 0%, transparent 50%),
             radial-gradient(circle at 80% 20%, rgba(255, 106, 0, 0.03) 0%, transparent 50%),
             linear-gradient(180deg, #0A0F1C 0%, #001428 100%);
+        }
+        
+        /* Smooth scrolling */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Touch friendly */
+        * {
+          -webkit-touch-callout: none;
+        }
+        
+        /* Line clamp utilities */
+        .line-clamp-1 {
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
       
