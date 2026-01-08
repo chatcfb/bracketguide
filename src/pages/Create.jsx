@@ -25,7 +25,7 @@ export default function Create() {
   });
 
   useEffect(() => {
-    if (user && !user.hasSeenCreatorModal) {
+    if (user && user.hasSeenCreatorModal !== true) {
       setShowIncentiveModal(true);
     }
   }, [user]);
