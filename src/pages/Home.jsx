@@ -7,6 +7,7 @@ import LiveScoreBanner from '@/components/feed/LiveScoreBanner';
 import FeaturedCarousel from '@/components/home/FeaturedCarousel';
 import QuickActions from '@/components/home/QuickActions';
 import DailyChallengeCard from '@/components/home/DailyChallengeCard';
+import SocialSentiment from '@/components/home/SocialSentiment';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -60,11 +61,23 @@ export default function Home() {
         </div>
       ) : (
         <div className="px-4 space-y-4">
-          {feedItems?.map((item, idx) => (
+          {feedItems?.slice(0, 6).map((item, idx) => (
             <FeedCard key={item.id} item={item} index={idx} />
           ))}
         </div>
       )}
+
+      {/* Social Sentiment */}
+      <SocialSentiment />
+
+      {/* More Feed Items */}
+      {!isLoading && feedItems?.length > 6 && (
+        <div className="px-4 space-y-4 mt-4">
+          {feedItems?.slice(6).map((item, idx) => (
+            <FeedCard key={item.id} item={item} index={idx + 6} />
+          ))}
+        </div>
+      )
 
       {/* Loading indicator for infinite scroll simulation */}
       {!isLoading && feedItems?.length > 0 && (
