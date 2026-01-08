@@ -191,12 +191,43 @@ Respond as Bruce - be enthusiastic, use basketball slang like "bucket," "hoops,"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#FF6A00] to-[#FF8C33] shadow-lg shadow-[#FF6A00]/30 flex items-center justify-center"
+            className="fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full shadow-lg shadow-[#FF6A00]/40 flex items-center justify-center overflow-hidden"
           >
-            <MessageCircle className="w-6 h-6 text-white" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#00BFFF] rounded-full flex items-center justify-center">
-              <Sparkles className="w-2.5 h-2.5 text-white" />
-            </span>
+            {/* Basketball with AI glow */}
+            <svg viewBox="0 0 56 56" className="w-full h-full">
+              {/* Outer glow */}
+              <defs>
+                <radialGradient id="bubbleGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#FF8C33" />
+                  <stop offset="100%" stopColor="#FF6A00" />
+                </radialGradient>
+                <filter id="bubbleAiGlow">
+                  <feGaussianBlur stdDeviation="2" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              {/* Basketball base */}
+              <circle cx="28" cy="28" r="26" fill="url(#bubbleGlow)" />
+              
+              {/* Basketball lines */}
+              <path d="M28 2 L28 54" stroke="#CC5500" strokeWidth="1.5" fill="none" opacity="0.6" />
+              <path d="M2 28 L54 28" stroke="#CC5500" strokeWidth="1.5" fill="none" opacity="0.6" />
+              <path d="M8 10 Q28 28 8 46" stroke="#CC5500" strokeWidth="1.5" fill="none" opacity="0.6" />
+              <path d="M48 10 Q28 28 48 46" stroke="#CC5500" strokeWidth="1.5" fill="none" opacity="0.6" />
+              
+              {/* AI sparkle center */}
+              <g filter="url(#bubbleAiGlow)">
+                <circle cx="28" cy="28" r="10" fill="rgba(0,191,255,0.3)" />
+                <path d="M28 20 L30 26 L36 28 L30 30 L28 36 L26 30 L20 28 L26 26 Z" fill="#00BFFF" />
+              </g>
+            </svg>
+            
+            {/* Pulsing ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-[#00BFFF]/50 animate-ping" style={{ animationDuration: '2s' }} />
           </motion.button>
         )}
       </AnimatePresence>
