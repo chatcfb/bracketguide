@@ -78,7 +78,7 @@ export default function MyChannel() {
       id: 5,
       type: 'social',
       typeLabel: 'Social Post',
-      title: '📊 Breaking: Transfer Portal's Biggest Moves',
+      title: '📊 Breaking: Transfer Portal\'s Biggest Moves',
       description: 'Quick takes on the most impactful transfers this season',
       thumbnail: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400&h=250&fit=crop',
       views: 3214,
