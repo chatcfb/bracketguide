@@ -8,6 +8,7 @@ import FeaturedCarousel from '@/components/home/FeaturedCarousel';
 import QuickActions from '@/components/home/QuickActions';
 import DailyChallengeCard from '@/components/home/DailyChallengeCard';
 import SocialSentiment from '@/components/home/SocialSentiment';
+import AIPredictions from '@/components/home/AIPredictions';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -66,6 +67,9 @@ export default function Home() {
           ))}
         </div>
       )}
+
+      {/* AI Predictions */}
+      <AIPredictions games={games} />
 
       {/* Social Sentiment */}
       <SocialSentiment />
