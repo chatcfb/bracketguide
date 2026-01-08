@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Search, Trophy, Users, Calendar, Loader2 } from 'lucide-react';
 import TeamCard from '@/components/explore/TeamCard';
 import PlayerCard from '@/components/explore/PlayerCard';
 import GameCard from '@/components/explore/GameCard';
+import TeamDetailModal from '@/components/explore/TeamDetailModal';
 
 export default function Explore() {
   const [activeTab, setActiveTab] = useState('rankings');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTeam, setSelectedTeam] = useState(null);
 
   const { data: teams, isLoading: teamsLoading } = useQuery({
     queryKey: ['teams'],
@@ -109,7 +110,7 @@ export default function Explore() {
                   <span className="text-xs text-gray-500">January 2026</span>
                 </div>
                 {filteredTeams.map((team, idx) => (
-                  <TeamCard key={team.id} team={team} index={idx} />
+                  <TeamCard key={team.id} team={team} index={idx} onClick={setSelectedTeam} />
                 ))}
               </motion.div>
             )}
@@ -165,6 +166,14 @@ export default function Explore() {
           </AnimatePresence>
         )}
       </div>
+
+      {/* Team Detail Modal */}
+      <TeamDetailModal 
+        team={selectedTeam}
+        players={players}
+        isOpen={!!selectedTeam}
+        onClose={() => setSelectedTeam(null)}
+      />
     </div>
   );
 }
