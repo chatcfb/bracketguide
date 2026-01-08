@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React, { useState, useEffect } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 import { motion } from 'framer-motion';
 import { FileText, MessageSquare, Video, Mic, Bot, Palette, Wand2 } from 'lucide-react';
 import ContentTypeCard from '@/components/create/ContentTypeCard';
 import CreatorModal from '@/components/create/CreatorModal';
+import CreatorIncentiveModal from '@/components/create/CreatorIncentiveModal';
 
 export default function Create() {
   const [selectedType, setSelectedType] = useState(null);
+  const [showIncentiveModal, setShowIncentiveModal] = useState(false);
+  const queryClient = useQueryClient();
+
+  const { data: user } = useQuery({
+    queryKey: ['currentUser'],
+    queryFn: () => base44.auth.me(),
+  });
+
+  const updateUserMutation = useMutation({
+    mutationFn: (data) => base44.auth.updateMe(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['currentUser'] });
+    },
+  });
+
+  useEffect(() => {
+    if (user && !user.hasSeenCreatorModal) {
+      setShowIncentiveModal(true);
+    }
+  }, [user]);
 
   const { data: teams } = useQuery({
     queryKey: ['teams'],
@@ -19,11 +40,24 @@ export default function Create() {
     queryFn: () => base44.entities.Player.list('-ppg', 20),
   });
 
+  const handleStartCreating = () => {
+    setShowIncentiveModal(false);
+    updateUserMutation.mutate({ hasSeenCreatorModal: true });
+  };
+
+  const handleContentTypeClick = (type) => {
+    if (user && !user.hasSeenCreatorModal) {
+      setShowIncentiveModal(true);
+    } else {
+      setSelectedType(type);
+    }
+  };
+
   const contentTypes = [
     {
       id: 'article',
       label: 'AI Article',
-      description: 'Generate data-driven articles with real stats and analysis',
+      description: 'Build your authority as an expert. Create insightful articles that establish your influence and grow your channel',
       icon: FileText,
       color: 'from-blue-500 to-cyan-500',
       time: '~30s',
@@ -32,7 +66,7 @@ export default function Create() {
     {
       id: 'social',
       label: 'Social Posts',
-      description: 'Create viral-ready posts for X, Instagram, and TikTok',
+      description: 'Go viral and reach thousands. Create engaging posts that amplify your voice and build your following',
       icon: MessageSquare,
       color: 'from-pink-500 to-red-500',
       time: '~15s',
@@ -103,8 +137,8 @@ export default function Create() {
       >
         <div className="flex items-center justify-around text-center">
           <div>
-            <p className="text-2xl font-bold text-white">1,247</p>
-            <p className="text-xs text-gray-400">Your Points</p>
+            <p className="text-2xl font-bold text-[#FFD700]">1,247</p>
+            <p className="text-xs text-gray-400">Points Earned</p>
           </div>
           <div className="w-px h-10 bg-[#00BFFF]/30" />
           <div>
@@ -128,7 +162,7 @@ export default function Create() {
               key={type.id} 
               type={type} 
               index={idx}
-              onClick={setSelectedType}
+              onClick={handleContentTypeClick}
             />
           ))}
         </div>
@@ -166,6 +200,13 @@ export default function Create() {
           ))}
         </div>
       </div>
+
+      {/* Creator Incentive Modal */}
+      <CreatorIncentiveModal
+        isOpen={showIncentiveModal}
+        onClose={() => setShowIncentiveModal(false)}
+        onStartCreating={handleStartCreating}
+      />
 
       {/* Creator Modal */}
       <CreatorModal
