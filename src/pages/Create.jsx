@@ -25,7 +25,7 @@ export default function Create() {
   });
 
   useEffect(() => {
-    if (user && user.hasSeenCreatorModal !== true) {
+    if (user && (user.creatorModalViewCount || 0) < 7) {
       setShowIncentiveModal(true);
     }
   }, [user]);
@@ -42,15 +42,12 @@ export default function Create() {
 
   const handleStartCreating = () => {
     setShowIncentiveModal(false);
-    updateUserMutation.mutate({ hasSeenCreatorModal: true });
+    const newCount = (user?.creatorModalViewCount || 0) + 1;
+    updateUserMutation.mutate({ creatorModalViewCount: newCount });
   };
 
   const handleContentTypeClick = (type) => {
-    if (user && !user.hasSeenCreatorModal) {
-      setShowIncentiveModal(true);
-    } else {
-      setSelectedType(type);
-    }
+    setSelectedType(type);
   };
 
   const contentTypes = [
