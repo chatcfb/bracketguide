@@ -29,9 +29,7 @@ export default function DailyChallengeCard({ challenge }) {
         {/* Header */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FF6A00] to-[#FF8C33] flex items-center justify-center">
-              <Trophy className="w-5 h-5 text-white" />
-            </div>
+            <Trophy className="w-7 h-7 text-[#FF6A00] drop-shadow-[0_0_10px_rgba(255,106,0,0.6)]" />
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-[#FF6A00] font-bold uppercase tracking-wide">Daily Challenge</span>
