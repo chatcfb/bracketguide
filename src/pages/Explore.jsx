@@ -8,11 +8,13 @@ import TeamCard from '@/components/explore/TeamCard';
 import PlayerCard from '@/components/explore/PlayerCard';
 import GameCard from '@/components/explore/GameCard';
 import TeamDetailModal from '@/components/explore/TeamDetailModal';
+import ConferenceFilter from '@/components/explore/ConferenceFilter';
 
 export default function Explore() {
   const [activeTab, setActiveTab] = useState('rankings');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [conferenceFilter, setConferenceFilter] = useState('all');
 
   const { data: teams, isLoading: teamsLoading } = useQuery({
     queryKey: ['teams'],
@@ -31,11 +33,13 @@ export default function Explore() {
 
   const isLoading = teamsLoading || playersLoading || gamesLoading;
 
-  // Filter teams by search
-  const filteredTeams = teams?.filter(t => 
-    t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    t.conference?.toLowerCase().includes(searchQuery.toLowerCase())
-  ).sort((a, b) => {
+  // Filter teams by search and conference
+  const filteredTeams = teams?.filter(t => {
+    const matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t.conference?.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesConference = conferenceFilter === 'all' || t.conference === conferenceFilter;
+    return matchesSearch && matchesConference;
+  }).sort((a, b) => {
     if (a.ranking && b.ranking) return a.ranking - b.ranking;
     if (a.ranking) return -1;
     if (b.ranking) return 1;
@@ -105,10 +109,11 @@ export default function Explore() {
                 exit={{ opacity: 0, y: -10 }}
                 className="space-y-3"
               >
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-2">
                   <h2 className="text-lg font-bold text-white">AP Top 25</h2>
                   <span className="text-xs text-gray-500">January 2026</span>
                 </div>
+                <ConferenceFilter selected={conferenceFilter} onSelect={setConferenceFilter} />
                 {filteredTeams.map((team, idx) => (
                   <TeamCard key={team.id} team={team} index={idx} onClick={setSelectedTeam} />
                 ))}
