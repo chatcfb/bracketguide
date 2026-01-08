@@ -10,7 +10,7 @@ export default function BottomNav({ currentPage }) {
     { name: 'Explore', icon: Search, page: 'Explore' },
     { name: 'Create', icon: PlusSquare, page: 'Create' },
     { name: 'Market', icon: ShoppingBag, page: 'Marketplace' },
-    { name: 'Profile', icon: User, page: 'Profile' }
+    { name: 'Channel', icon: User, page: 'MyChannel' }
   ];
 
   return (
