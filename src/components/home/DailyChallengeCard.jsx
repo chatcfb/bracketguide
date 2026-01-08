@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Clock, Users, ChevronRight, Flame } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
 
 export default function DailyChallengeCard({ challenge }) {
   if (!challenge) return null;
@@ -84,10 +86,12 @@ export default function DailyChallengeCard({ challenge }) {
         )}
 
         {/* CTA */}
-        <Button className="w-full bg-[#FF6A00] hover:bg-[#FF8C33] text-white font-bold">
-          Play Now
-          <ChevronRight className="w-4 h-4 ml-2" />
-        </Button>
+        <Link to={createPageUrl('DailyPickEm')} className="block">
+          <Button className="w-full bg-[#FF6A00] hover:bg-[#FF8C33] text-white font-bold">
+            Play Now
+            <ChevronRight className="w-4 h-4 ml-2" />
+          </Button>
+        </Link>
       </div>
     </motion.div>
   );
