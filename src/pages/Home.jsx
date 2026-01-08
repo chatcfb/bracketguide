@@ -9,6 +9,7 @@ import QuickActions from '@/components/home/QuickActions';
 import DailyChallengeCard from '@/components/home/DailyChallengeCard';
 import SocialSentiment from '@/components/home/SocialSentiment';
 import AIPredictions from '@/components/home/AIPredictions';
+import TopPlayersWidget from '@/components/home/TopPlayersWidget';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -25,6 +26,11 @@ export default function Home() {
   const { data: challenges } = useQuery({
     queryKey: ['challenges'],
     queryFn: () => base44.entities.Challenge.filter({ is_active: true, is_daily: true }, '-created_date', 1),
+  });
+
+  const { data: players } = useQuery({
+    queryKey: ['topPlayers'],
+    queryFn: () => base44.entities.Player.list('-ppg', 10),
   });
 
   const isLoading = feedLoading || gamesLoading;
@@ -67,6 +73,9 @@ export default function Home() {
           ))}
         </div>
       )}
+
+      {/* Top Players */}
+      <TopPlayersWidget players={players} />
 
       {/* AI Predictions */}
       <AIPredictions games={games} />
