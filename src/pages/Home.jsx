@@ -6,6 +6,7 @@ import FeedCard from '@/components/feed/FeedCard';
 import LiveScoreBanner from '@/components/feed/LiveScoreBanner';
 import FeaturedCarousel from '@/components/home/FeaturedCarousel';
 import QuickActions from '@/components/home/QuickActions';
+import DailyChallengeCard from '@/components/home/DailyChallengeCard';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
@@ -17,6 +18,11 @@ export default function Home() {
   const { data: games, isLoading: gamesLoading } = useQuery({
     queryKey: ['games'],
     queryFn: () => base44.entities.Game.list('-game_date', 20),
+  });
+
+  const { data: challenges } = useQuery({
+    queryKey: ['challenges'],
+    queryFn: () => base44.entities.Challenge.filter({ is_active: true, is_daily: true }, '-created_date', 1),
   });
 
   const isLoading = feedLoading || gamesLoading;
@@ -33,6 +39,13 @@ export default function Home() {
 
       {/* Quick Actions */}
       <QuickActions />
+
+      {/* Daily Challenge */}
+      {challenges?.[0] && (
+        <div className="py-4">
+          <DailyChallengeCard challenge={challenges[0]} />
+        </div>
+      )}
 
       {/* Section Header */}
       <div className="px-4 py-3 flex items-center justify-between">
