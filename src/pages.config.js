@@ -2,10 +2,11 @@ import Create from './pages/Create';
 import DailyPickEm from './pages/DailyPickEm';
 import Explore from './pages/Explore';
 import Home from './pages/Home';
+import Landing from './pages/Landing';
 import Marketplace from './pages/Marketplace';
 import MyChannel from './pages/MyChannel';
 import Profile from './pages/Profile';
-import Landing from './pages/Landing';
+import LogoDemo from './pages/LogoDemo';
 import __Layout from './Layout.jsx';
 
 
@@ -14,10 +15,11 @@ export const PAGES = {
     "DailyPickEm": DailyPickEm,
     "Explore": Explore,
     "Home": Home,
+    "Landing": Landing,
     "Marketplace": Marketplace,
     "MyChannel": MyChannel,
     "Profile": Profile,
-    "Landing": Landing,
+    "LogoDemo": LogoDemo,
 }
 
 export const pagesConfig = {
