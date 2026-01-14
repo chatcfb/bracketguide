@@ -6,9 +6,11 @@ import { FileText, MessageSquare, Video, Mic, Bot, Palette, Wand2 } from 'lucide
 import ContentTypeCard from '@/components/create/ContentTypeCard';
 import CreatorModal from '@/components/create/CreatorModal';
 import CreatorIncentiveModal from '@/components/create/CreatorIncentiveModal';
+import ReelCreatorModal from '@/components/create/ReelCreatorModal';
 
 export default function Create() {
   const [selectedType, setSelectedType] = useState(null);
+  const [showReelModal, setShowReelModal] = useState(false);
   const [showIncentiveModal, setShowIncentiveModal] = useState(true);
   const queryClient = useQueryClient();
 
@@ -43,7 +45,11 @@ export default function Create() {
   };
 
   const handleContentTypeClick = (type) => {
-    setSelectedType(type);
+    if (type.id === 'reel') {
+      setShowReelModal(true);
+    } else {
+      setSelectedType(type);
+    }
   };
 
   const contentTypes = [
@@ -67,12 +73,12 @@ export default function Create() {
     },
     {
       id: 'reel',
-      label: 'Reel Script',
-      description: 'Generate highlight reel scripts with voiceover and scenes',
+      label: 'Create Reel',
+      description: 'AI-generate, custom build, or upload your own video content',
       icon: Video,
       color: 'from-purple-500 to-pink-500',
-      time: '~45s',
-      points: 150
+      time: '~30s',
+      points: '25-150'
     },
     {
       id: 'podcast',
@@ -206,6 +212,14 @@ export default function Create() {
         isOpen={!!selectedType}
         onClose={() => setSelectedType(null)}
         contentType={selectedType}
+        teams={teams}
+        players={players}
+      />
+
+      {/* Reel Creator Modal */}
+      <ReelCreatorModal
+        isOpen={showReelModal}
+        onClose={() => setShowReelModal(false)}
         teams={teams}
         players={players}
       />
