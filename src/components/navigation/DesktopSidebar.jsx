@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Home, Search, PlusSquare, ShoppingBag, User, Trophy, Flame, Calendar, TrendingUp, Users } from 'lucide-react';
+import { Home, Search, PlusSquare, ShoppingBag, User, Trophy, Flame, Calendar, TrendingUp, Users, Radio } from 'lucide-react';
 import CBBAILogo from '@/components/ui/CBBAILogo';
 import { useTheme } from '@/components/ThemeProvider';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -12,6 +12,7 @@ export default function DesktopSidebar({ currentPage }) {
   const mainNav = [
     { name: 'Home', icon: Home, page: 'Home' },
     { name: 'Explore', icon: Search, page: 'Explore' },
+    { name: 'Live Games', icon: Radio, page: 'GameCenter' },
     { name: 'Create', icon: PlusSquare, page: 'Create' },
     { name: 'Market', icon: ShoppingBag, page: 'Marketplace' },
     { name: 'Channel', icon: User, page: 'MyChannel' },

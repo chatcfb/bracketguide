@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Home, Search, PlusSquare, ShoppingBag, User } from 'lucide-react';
+import { Home, Search, PlusSquare, Radio, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -11,8 +11,8 @@ export default function BottomNav({ currentPage }) {
   const navItems = [
     { name: 'Home', icon: Home, page: 'Home' },
     { name: 'Explore', icon: Search, page: 'Explore' },
+    { name: 'Live', icon: Radio, page: 'GameCenter' },
     { name: 'Create', icon: PlusSquare, page: 'Create' },
-    { name: 'Market', icon: ShoppingBag, page: 'Marketplace' },
     { name: 'Channel', icon: User, page: 'MyChannel' }
   ];
 
