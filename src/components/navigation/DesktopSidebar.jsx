@@ -26,15 +26,16 @@ export default function DesktopSidebar({ currentPage }) {
   ];
 
   return (
-    <aside className="fixed left-0 top-0 bottom-0 w-64 bg-[#001428] border-r border-[#00BFFF]/10 flex flex-col z-40">
+    <aside className={`fixed left-0 top-0 bottom-0 w-64 border-r flex flex-col z-40 transition-colors duration-300 ${isDark ? 'bg-[#001428] border-[#00BFFF]/10' : 'bg-white border-gray-200'}`}>
       {/* Logo */}
-      <div className="p-6 border-b border-[#00BFFF]/10">
+      <div className={`p-6 border-b flex items-center justify-between ${isDark ? 'border-[#00BFFF]/10' : 'border-gray-200'}`}>
         <CBBAILogo size="md" />
+        <ThemeToggle />
       </div>
 
       {/* Main Navigation */}
       <nav className="flex-1 p-4 space-y-1">
-        <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-3">Menu</p>
+        <p className={`text-xs uppercase tracking-wider mb-3 px-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>Menu</p>
         {mainNav.map((item) => {
           const isActive = currentPage === item.page || 
             (item.page === 'MyChannel' && currentPage === 'MyChannel') ||
@@ -47,7 +48,7 @@ export default function DesktopSidebar({ currentPage }) {
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${
                 isActive 
                   ? 'bg-[#FF6A00]/10 text-[#FF6A00]' 
-                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                  : isDark ? 'text-gray-400 hover:bg-white/5 hover:text-white' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'
               }`}
             >
               <item.icon className={`w-5 h-5 ${isActive ? 'drop-shadow-[0_0_8px_rgba(255,106,0,0.5)]' : ''}`} />
@@ -61,12 +62,12 @@ export default function DesktopSidebar({ currentPage }) {
 
         {/* Quick Links */}
         <div className="pt-6">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 px-3">Quick Links</p>
+          <p className={`text-xs uppercase tracking-wider mb-3 px-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>Quick Links</p>
           {quickLinks.map((item) => (
             <Link
               key={item.name}
               to={createPageUrl(item.page)}
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all"
+              className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all ${isDark ? 'text-gray-400 hover:bg-white/5 hover:text-white' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'}`}
             >
               <item.icon className={`w-4 h-4 ${item.iconColor} ${item.glow}`} />
               <span className="text-sm">{item.name}</span>
@@ -76,9 +77,9 @@ export default function DesktopSidebar({ currentPage }) {
       </nav>
 
       {/* Points Display */}
-      <div className="p-4 border-t border-[#00BFFF]/10">
-        <div className="bg-gradient-to-r from-[#FF6A00]/10 to-[#00BFFF]/10 rounded-xl p-4 border border-[#FF6A00]/20">
-          <p className="text-xs text-gray-400 mb-1">Your Points</p>
+      <div className={`p-4 border-t ${isDark ? 'border-[#00BFFF]/10' : 'border-gray-200'}`}>
+        <div className={`rounded-xl p-4 border ${isDark ? 'bg-gradient-to-r from-[#FF6A00]/10 to-[#00BFFF]/10 border-[#FF6A00]/20' : 'bg-gradient-to-r from-orange-50 to-blue-50 border-orange-200'}`}>
+          <p className={`text-xs mb-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Your Points</p>
           <p className="text-2xl font-bold text-[#FF6A00]">1,247</p>
         </div>
       </div>
