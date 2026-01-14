@@ -17,7 +17,7 @@ export default function BottomNav({ currentPage }) {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-[#001428]/95 backdrop-blur-xl border-t border-[#00BFFF]/20">
+    <nav className={`fixed bottom-0 left-0 right-0 z-40 backdrop-blur-xl border-t transition-colors duration-300 ${isDark ? 'bg-[#001428]/95 border-[#00BFFF]/20' : 'bg-white/95 border-gray-200'}`}>
       <div className="flex items-center justify-around h-16 max-w-lg mx-auto px-2">
         {navItems.map((item) => {
           const isActive = currentPage === item.page;
@@ -38,7 +38,7 @@ export default function BottomNav({ currentPage }) {
               <motion.div
                 whileTap={{ scale: 0.9 }}
                 className={`flex flex-col items-center gap-1 ${
-                  isActive ? 'text-[#FF6A00]' : 'text-gray-400'
+                  isActive ? 'text-[#FF6A00]' : isDark ? 'text-gray-400' : 'text-gray-500'
                 }`}
               >
                 <Icon className={`w-5 h-5 ${item.name === 'Create' ? 'w-6 h-6' : ''}`} />
@@ -50,7 +50,7 @@ export default function BottomNav({ currentPage }) {
       </div>
       
       {/* Safe area for iOS */}
-      <div className="h-[env(safe-area-inset-bottom)] bg-[#001428]" />
+      <div className={`h-[env(safe-area-inset-bottom)] ${isDark ? 'bg-[#001428]' : 'bg-white'}`} />
     </nav>
   );
 }
