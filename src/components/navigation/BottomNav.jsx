@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Home, Search, PlusSquare, ShoppingBag, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTheme } from '@/components/ThemeProvider';
 
 export default function BottomNav({ currentPage }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const navItems = [
     { name: 'Home', icon: Home, page: 'Home' },
     { name: 'Explore', icon: Search, page: 'Explore' },

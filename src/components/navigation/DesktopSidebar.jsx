@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Home, Search, PlusSquare, ShoppingBag, User, Trophy, Flame, Calendar, TrendingUp, Users } from 'lucide-react';
 import CBBAILogo from '@/components/ui/CBBAILogo';
+import { useTheme } from '@/components/ThemeProvider';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function DesktopSidebar({ currentPage }) {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const mainNav = [
     { name: 'Home', icon: Home, page: 'Home' },
     { name: 'Explore', icon: Search, page: 'Explore' },
