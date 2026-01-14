@@ -3,10 +3,11 @@ import DailyPickEm from './pages/DailyPickEm';
 import Explore from './pages/Explore';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
+import LogoDemo from './pages/LogoDemo';
 import Marketplace from './pages/Marketplace';
 import MyChannel from './pages/MyChannel';
 import Profile from './pages/Profile';
-import LogoDemo from './pages/LogoDemo';
+import GameCenter from './pages/GameCenter';
 import __Layout from './Layout.jsx';
 
 
@@ -16,10 +17,11 @@ export const PAGES = {
     "Explore": Explore,
     "Home": Home,
     "Landing": Landing,
+    "LogoDemo": LogoDemo,
     "Marketplace": Marketplace,
     "MyChannel": MyChannel,
     "Profile": Profile,
-    "LogoDemo": LogoDemo,
+    "GameCenter": GameCenter,
 }
 
 export const pagesConfig = {
