@@ -1,0 +1,76 @@
+{
+  "name": "FeedItem",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "article",
+        "reel",
+        "podcast",
+        "prediction",
+        "challenge",
+        "ugc",
+        "score",
+        "avatar_show"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "thumbnail_url": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "author_avatar": {
+      "type": "string"
+    },
+    "likes": {
+      "type": "number"
+    },
+    "comments": {
+      "type": "number"
+    },
+    "shares": {
+      "type": "number"
+    },
+    "team_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "player_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_featured": {
+      "type": "boolean"
+    },
+    "is_ai_generated": {
+      "type": "boolean"
+    },
+    "duration": {
+      "type": "string",
+      "description": "For video/audio content"
+    },
+    "prediction_data": {
+      "type": "object",
+      "description": "For prediction type items"
+    }
+  },
+  "required": [
+    "type",
+    "title"
+  ]
+}

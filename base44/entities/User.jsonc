@@ -1,0 +1,33 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "channelBannerUrl": {
+      "type": "string",
+      "description": "URL for the user's channel banner image"
+    },
+    "channelDescription": {
+      "type": "string",
+      "description": "User's channel about section"
+    },
+    "subscriberCount": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of subscribers/followers"
+    },
+    "totalViews": {
+      "type": "number",
+      "default": 0,
+      "description": "Total views across all content"
+    },
+    "creatorModalViewCount": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times user has seen the creator incentive modal"
+    }
+  },
+  "required": [
+    "channelBannerUrl",
+    "channelDescription"
+  ]
+}

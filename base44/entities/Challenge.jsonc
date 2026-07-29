@@ -1,0 +1,71 @@
+{
+  "name": "Challenge",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "prediction",
+        "trivia",
+        "content_creation",
+        "streak"
+      ]
+    },
+    "points_reward": {
+      "type": "number"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard",
+        "expert"
+      ]
+    },
+    "participants_count": {
+      "type": "number"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_daily": {
+      "type": "boolean"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "team_focus": {
+      "type": "string"
+    },
+    "leaderboard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "type",
+    "points_reward"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Game",
+  "type": "object",
+  "properties": {
+    "home_team": {
+      "type": "string"
+    },
+    "away_team": {
+      "type": "string"
+    },
+    "home_team_id": {
+      "type": "string"
+    },
+    "away_team_id": {
+      "type": "string"
+    },
+    "home_score": {
+      "type": "number"
+    },
+    "away_score": {
+      "type": "number"
+    },
+    "game_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "live",
+        "final"
+      ]
+    },
+    "venue": {
+      "type": "string"
+    },
+    "tv_network": {
+      "type": "string"
+    },
+    "home_ranking": {
+      "type": "number"
+    },
+    "away_ranking": {
+      "type": "number"
+    },
+    "is_conference_game": {
+      "type": "boolean"
+    },
+    "highlights": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "home_team",
+    "away_team",
+    "game_date"
+  ]
+}

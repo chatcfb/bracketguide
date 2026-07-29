@@ -1,0 +1,85 @@
+{
+  "name": "Player",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "team_id": {
+      "type": "string",
+      "description": "Reference to Team"
+    },
+    "team_name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string",
+      "enum": [
+        "PG",
+        "SG",
+        "SF",
+        "PF",
+        "C"
+      ]
+    },
+    "jersey_number": {
+      "type": "number"
+    },
+    "year": {
+      "type": "string",
+      "enum": [
+        "Freshman",
+        "Sophomore",
+        "Junior",
+        "Senior",
+        "Graduate"
+      ]
+    },
+    "height": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "number"
+    },
+    "hometown": {
+      "type": "string"
+    },
+    "ppg": {
+      "type": "number"
+    },
+    "rpg": {
+      "type": "number"
+    },
+    "apg": {
+      "type": "number"
+    },
+    "spg": {
+      "type": "number"
+    },
+    "bpg": {
+      "type": "number"
+    },
+    "fg_pct": {
+      "type": "number"
+    },
+    "three_pct": {
+      "type": "number"
+    },
+    "ft_pct": {
+      "type": "number"
+    },
+    "games_played": {
+      "type": "number"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "is_star": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "team_name"
+  ]
+}

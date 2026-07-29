@@ -1,0 +1,65 @@
+{
+  "name": "Team",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Team name"
+    },
+    "mascot": {
+      "type": "string"
+    },
+    "conference": {
+      "type": "string"
+    },
+    "ranking": {
+      "type": "number",
+      "description": "AP Top 25 ranking, null if unranked"
+    },
+    "wins": {
+      "type": "number"
+    },
+    "losses": {
+      "type": "number"
+    },
+    "conference_wins": {
+      "type": "number"
+    },
+    "conference_losses": {
+      "type": "number"
+    },
+    "ppg": {
+      "type": "number",
+      "description": "Points per game"
+    },
+    "opp_ppg": {
+      "type": "number",
+      "description": "Opponent points per game"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "primary_color": {
+      "type": "string"
+    },
+    "secondary_color": {
+      "type": "string"
+    },
+    "arena": {
+      "type": "string"
+    },
+    "coach": {
+      "type": "string"
+    },
+    "win_streak": {
+      "type": "number"
+    },
+    "last_5": {
+      "type": "string",
+      "description": "Last 5 games result like W-W-W-L-W"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
